@@ -35,5 +35,14 @@
     <string name="title_activity_phys_answer">PhysAnswerActivity</string>
     <string name="title_activity_marvel_answer">MarvelAnswerActivity</string>
     <string name="title_activity_phys_q1">PhysQ1Activity</string>
+    <string name="title_activity_phys_q2">PhysQ2Activity</string>
+    <string name="title_activity_phys_q3">PhysQ3Activity</string>
+    <string name="title_activity_phys_q4">PhysQ4Activity</string>
+    <string name="title_activity_phys_q5">PhysQ5Activity</string>
+    <string name="title_activity_marvel_q1">MarvelQ1Activity</string>
+    <string name="title_activity_marvel_q2">MarvelQ2Activity</string>
+    <string name="title_activity_marvel_q3">MarvelQ3Activity</string>
+    <string name="title_activity_marvel_q4">MarvelQ4Activity</string>
+    <string name="title_activity_marvel_q5">MarvelQ5Activity</string>
 
 </resources>

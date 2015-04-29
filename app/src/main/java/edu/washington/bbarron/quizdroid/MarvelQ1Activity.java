@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
-public class PhysQ1Activity extends ActionBarActivity {
+public class MarvelQ1Activity extends ActionBarActivity {
 
     private RadioGroup options;
     private Button submit;
@@ -17,7 +17,7 @@ public class PhysQ1Activity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phys_q1);
+        setContentView(R.layout.activity_marvel_q1);
 
         Intent intent = getIntent();
         totalCorrect = intent.getIntExtra("totalCorrect", 0);
@@ -35,11 +35,11 @@ public class PhysQ1Activity extends ActionBarActivity {
                 int selectedId = options.getCheckedRadioButtonId();
                 RadioButton selected = (RadioButton) findViewById(selectedId);
                 String yourAnswer = (String) selected.getText();
-                RadioButton answer = (RadioButton) findViewById(R.id.a3);
+                RadioButton answer = (RadioButton) findViewById(R.id.a1);
                 String correctAnswer = (String) answer.getText();
 
-                Intent viewAnswer = new Intent(PhysQ1Activity.this, PhysAnswerActivity.class);
-                if (selectedId == R.id.a3) { // correct
+                Intent viewAnswer = new Intent(MarvelQ1Activity.this, MarvelAnswerActivity.class);
+                if (selectedId == R.id.a1) { // correct
                     viewAnswer.putExtra("response", "Correct!");
                     totalCorrect += 1;
                 } else { // incorrect

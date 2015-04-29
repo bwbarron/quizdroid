@@ -37,13 +37,13 @@ public class OverviewActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent viewQ1;
 
-                //if (quiz.equals("Math")) {
+                if (quiz.equals("Math")) {
                     viewQ1 = new Intent(OverviewActivity.this, MathQ1Activity.class);
-                //} else if (quiz.equals("Physics")) {
-                    //viewQ1 = new Intent(OverviewActivity.this, PhysQ1Activity.class);
-                //} else { // Marvel
-                    //viewQ1 = new Intent(OverviewActivity.this, MarvelQ1Activity.class);
-                //}
+                } else if (quiz.equals("Physics")) {
+                    viewQ1 = new Intent(OverviewActivity.this, PhysQ1Activity.class);
+                } else { // Marvel
+                    viewQ1 = new Intent(OverviewActivity.this, MarvelQ1Activity.class);
+                }
                 startActivity(viewQ1);
                 finish();
             }

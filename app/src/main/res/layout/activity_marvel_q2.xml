@@ -4,7 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.washington.bbarron.quizdroid.PhysQ1Activity">
+    tools:context="edu.washington.bbarron.quizdroid.MarvelQ2Activity">
 
     <RelativeLayout
         android:id="@+id/question"
@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Which of the following is a physical quantity that has a magnitude but no direction?" />
+            android:text="What is the Avengers' primary mode of transport?" />
 
     </RelativeLayout>
 
@@ -41,25 +41,25 @@
                 android:id="@+id/a1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Vector" />
+                android:text="The Blackbird" />
 
             <RadioButton
                 android:id="@+id/a2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Frame of reference" />
+                android:text="The Quinjet" />
 
             <RadioButton
                 android:id="@+id/a3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Scalar" />
+                android:text="The Strato" />
 
             <RadioButton
                 android:id="@+id/a4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Resultant" />
+                android:text="The Blackhawk" />
 
         </RadioGroup>
 

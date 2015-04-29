@@ -104,6 +104,78 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
         </activity>
+        <activity
+            android:name=".PhysQ2Activity"
+            android:label="@string/title_activity_phys_q2"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
+        <activity
+            android:name=".PhysQ3Activity"
+            android:label="@string/title_activity_phys_q3"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
+        <activity
+            android:name=".PhysQ4Activity"
+            android:label="@string/title_activity_phys_q4"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
+        <activity
+            android:name=".PhysQ5Activity"
+            android:label="@string/title_activity_phys_q5"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
+        <activity
+            android:name=".MarvelQ1Activity"
+            android:label="@string/title_activity_marvel_q1"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
+        <activity
+            android:name=".MarvelQ2Activity"
+            android:label="@string/title_activity_marvel_q2"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
+        <activity
+            android:name=".MarvelQ3Activity"
+            android:label="@string/title_activity_marvel_q3"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
+        <activity
+            android:name=".MarvelQ4Activity"
+            android:label="@string/title_activity_marvel_q4"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
+        <activity
+            android:name=".MarvelQ5Activity"
+            android:label="@string/title_activity_marvel_q5"
+            android:parentActivityName=".OverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.washington.bbarron.quizdroid.OverviewActivity" />
+        </activity>
     </application>
 
 </manifest>
