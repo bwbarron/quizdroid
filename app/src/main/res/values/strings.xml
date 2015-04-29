@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Quiz Droid</string>
+    <string name="title_activity_overview">OverviewActivity</string>
+    <string name="title_activity_answer">AnswerActivity</string>
+
+
+    <string name="quiz1">Math</string>
+    <string name="quiz1desc">
+        Number of questions: 5\n
+        Some simple math problems
+    </string>
+    <string name="title_activity_math_q1">MathQ1Activity</string>
+
+
+    <string name="quiz2">Physics</string>
+    <string name="quiz2desc">
+        Number of questions: 5\n
+        Some stupid difficult physics problems
+    </string>
+
+
+    <string name="quiz3">Marvel Super heroes</string>
+    <string name="quiz3desc">
+        Number of questions: 5\n
+        Trivia about your favorite Marvel super heroes
+    </string>
+    <string name="title_activity_math_answer">MathAnswerActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_math_q2">MathQ2Activity</string>
+    <string name="title_activity_math_q3">MathQ3Activity</string>
+    <string name="title_activity_math_q4">MathQ4Activity</string>
+    <string name="title_activity_math_q5">MathQ5Activity</string>
+    <string name="title_activity_phys_answer">PhysAnswerActivity</string>
+    <string name="title_activity_marvel_answer">MarvelAnswerActivity</string>
+    <string name="title_activity_phys_q1">PhysQ1Activity</string>
+
+</resources>
