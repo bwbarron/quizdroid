@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <Math>
+        <Description>Some simple math problems. Number of questions: 5</Description>
+        <Q1>Given 2x-5=99, what does x equal?</Q1>
+            <A1>3</A1>
+            <A2>29</A2>
+            <A3>47</A3>
+            <A4 answer="true">52</A4>
+        <Q2>The integral of 1/x dx = ?</Q2>
+            <A1>cosx</A1>
+            <A2>sinx</A2>
+            <A3 answer="true">lnx</A3>
+            <A4>e^x</A4>
+        <Q3>sinx/cosx = ?</Q3>
+            <A1 answer="true">tanx</A1>
+            <A2>1/tanx</A2>
+            <A3>cotx</A3>
+            <A4>1/cotx</A4>
+        <Q4>When can Green's Theorem be used?</Q4>
+            <A1>When the curve is does not enclose an area</A1>
+            <A2>When the curve is a negatively-oriented, simple closed curve</A2>
+            <A3 answer="true">When the curve is a positively-oriented, simple closed curve</A3>
+            <A4>It can be used on any curve</A4>
+        <Q5>What is the output of curl(F), where F is a vector field?</Q5>
+            <A1>Scalar value</A1>
+            <A2 answer="true">Vector field</A2>
+            <A3>Function</A3>
+            <A4>Matrix</A4>
+    </Math>
+
+
+    <Physics>
+        <Description>Some stupid difficult physics problems. Number of questions: 5</Description>
+        <Q1>Which of the following is a physical quantity that has a magnitude but no direction?</Q1>
+            <A1>Vector</A1>
+            <A2>Frame of reference</A2>
+            <A3 answer="true">Scalar</A3>
+            <A4>Resultant</A4>
+        <Q2>Which of the following is a physical quantity that has both magnitude and direction?</Q2>
+            <A1 answer="true">Vector</A1>
+            <A2>Scalar</A2>
+            <A3>Resultant</A3>
+            <A4>Frame of reference</A4>
+        <Q3>In a coordinate system, a vector is oriented at angle with respect to the x-axis. The y component of the vector equals the vector's magnitude multiplied by which trigonometric function?</Q3>
+            <A1>Cos angle</A1>
+            <A2>Cot angle</A2>
+            <A3 answer="true">Sin angle</A3>
+            <A4>Tan angle</A4>
+        <Q4>Which of the following is the motion of objects moving in two dimensions under the influence of gravity?</Q4>
+            <A1>Vertical velocity</A1>
+            <A2>Horizontal velocity</A2>
+            <A3>Directrix</A3>
+            <A4 answer="true">Projectile motion</A4>
+        <Q5>What is the path of a projectile (in the absence of friction)?</Q5>
+            <A1>A wavy line</A1>
+            <A2>Projectiles do not follow a predictable path</A2>
+            <A3>Hyperbola</A3>
+            <A4 answer="true">Parabola</A4>
+    </Physics>
+
+
+    <Marvel>
+        <Description>Trivia about your favorite Marvel super heroes. Number of questions: 5</Description>
+        <Q1>What was Wolverine's name when he was a Horseman of the Apocalypse?</Q1>
+            <A1 answer="true">Death</A1>
+            <A2>Destruction</A2>
+            <A3>Rage</A3>
+            <A4>Oblivion</A4>
+        <Q2>What is the Avengers' primary mode of transport?</Q2>
+            <A1>The Blackbird</A1>
+            <A2 answer="true">The Quinjet</A2>
+            <A3>The Strato</A3>
+            <A4>The Blackhawk</A4>
+        <Q3>Who has not been a member of the Avengers?</Q3>
+            <A1>Moon knight</A1>
+            <A2>Venom</A2>
+            <A3 answer="true">Gambit</A3>
+            <A4>She-Hulk</A4>
+        <Q4>Wolverine is often called Logan, but what is his actual birth name?</Q4>
+            <A1>Luke Howlett</A1>
+            <A2>Fred Howlett</A2>
+            <A3>Thomas Howlett</A3>
+            <A4 answer="true">James Howlett</A4>
+        <Q5>Before becoming Radioactive Man, Chen Lu was a:</Q5>
+            <A1 answer="true">Nuclear physicist</A1>
+            <A2>Spy</A2>
+            <A3>Pilot</A3>
+            <A4>Biological scientist</A4>
+    </Marvel>
+
+</resources>

@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">QuizDroid</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_trivia">TriviaActivity</string>
+
+    <string name="quiz1">Math</string>
+    <string name="quiz2">Physics</string>
+    <string name="quiz3">Marvel Super Heroes</string>
+    <string name="quiz4">Super Smash Brothers Melee</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
