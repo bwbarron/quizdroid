@@ -16,21 +16,17 @@ import java.io.IOException;
 
 public class OverviewFragment extends Fragment {
 
-    private String topic;
-    private String desc;
+    private Topic topic;
     private Activity activity;
 
-    public OverviewFragment() {
-        // Required empty public constructor
-    }
+    public OverviewFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            topic = getArguments().getString("topic");
-            desc = getArguments().getString("desc");
-        }
+
+        activity = getActivity();
+        topic = ((TriviaActivity) activity).topic;
     }
 
     @Override
@@ -40,27 +36,22 @@ public class OverviewFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_overview, container, false);
 
         ViewGroup view = (ViewGroup) v.findViewById(R.id.title);
-        TextView tv = (TextView) view.getChildAt(0);
-        tv.setText(topic);
+        TextView titleText = (TextView) view.getChildAt(0);
+        titleText.setText(topic.title);
 
         ViewGroup description = (ViewGroup) v.findViewById(R.id.description);
         TextView descText = (TextView) description.getChildAt(0);
-        descText.setText(desc);
+        descText.setText("Number of questions: " + topic.questions.size() + "\n" + topic.desc);
 
         Button b = (Button) v.findViewById(R.id.begin);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if (activity instanceof TriviaActivity) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("qNum", 1);
-                    bundle.putString("topic", topic);
-                    try {
-                        ((TriviaActivity) activity).createQuestion(bundle);
-                    } catch (XmlPullParserException | IOException e) {
-                        // handle
-                    }
-                //}
+                Bundle bundle = new Bundle();
+                bundle.putInt("qNum", 0);
+                bundle.putInt("nCorrect", 0);
+
+                ((TriviaActivity) activity).createQuestion(bundle);
             }
         });
 
@@ -73,4 +64,5 @@ public class OverviewFragment extends Fragment {
 
         this.activity = activity;
     }
+
 }

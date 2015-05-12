@@ -6,6 +6,6 @@ public interface TopicRepository {
 
     public List<Topic> getAllTopics();
 
-    public List<Topic> getTopicsByKeyword(String keyword);
+    public Topic getTopicByKeyword(String keyword);
 
 }

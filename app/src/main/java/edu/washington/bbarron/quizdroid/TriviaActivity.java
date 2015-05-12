@@ -11,12 +11,12 @@ import android.util.Xml;
 import android.widget.Toast;
 import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
+import java.util.List;
 
 
 public class TriviaActivity extends ActionBarActivity {
 
-    String topic;
-    String desc;
+    Topic topic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,100 +25,42 @@ public class TriviaActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            topic = intent.getStringExtra("topic");
-
-            try {
-                XmlResourceParser xrp = getResources().getXml(R.xml.trivia);
-                createOverview(xrp);
-            } catch (XmlPullParserException | IOException e) {
-                // handle exception
-            }
+            String title = intent.getStringExtra("topic");
+            //topic = ((QuizApp) getApplication()).getTopicByKeyword(title);
+            topic = ((QuizApp) getApplication()).getAllTopics().get(0); // testing purposes
         }
-    }
-
-    public void createOverview(XmlResourceParser xrp) throws XmlPullParserException, IOException {
-        xrp.next();
-        int eventType = xrp.getEventType();
-        while (eventType != XmlResourceParser.END_DOCUMENT) {
-            if (eventType == XmlResourceParser.START_TAG) {
-                String quiz = xrp.getName();
-                if (quiz.equalsIgnoreCase(topic)) {
-                    break;
-                }
-            }
-            eventType = xrp.next();
-        }
-        xrp.next();
-        if (xrp.getName().equalsIgnoreCase("description")) {
-            xrp.next();
-            desc = xrp.getText();
-        }
-
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        Bundle topicBundle = new Bundle();
-        topicBundle.putString("topic", topic);
-        topicBundle.putString("desc", desc);
 
         OverviewFragment overview = new OverviewFragment();
-        overview.setArguments(topicBundle);
 
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.add(R.id.container, overview);
         ft.commit();
     }
 
-    public void createQuestion(Bundle bundle) throws XmlPullParserException, IOException {
-        int qNum = bundle.getInt("qNum");
-
-        XmlResourceParser xrp = getResources().getXml(R.xml.trivia);
-        xrp.next();
-        int eventType = xrp.getEventType();
-        while (eventType != XmlResourceParser.END_DOCUMENT) {
-            if (eventType == XmlResourceParser.START_TAG) {
-                String quiz = xrp.getName();
-                if (quiz.equalsIgnoreCase(topic)) {
-                    for (int i = 0; i < 3 + ((qNum - 1) * 10); i++) {
-                        xrp.next();
-                    }
-                }
-            }
-        }
-        xrp.next();
+    public void createQuestion(Bundle bundle) {
         Bundle questionBundle = new Bundle();
-        String question = xrp.getText();
-        questionBundle.putString("topic", topic);
-        questionBundle.putInt("qNum", qNum);
-        questionBundle.putString("question", question);
-        for (int i = 0; i < 4; i++) {
-            xrp.next();
-            if (xrp.getAttributeCount() > 0 && xrp.getAttributeName(0).equals("answer")) {
-                bundle.putInt("aNum", i);
-            }
-            xrp.next();
-            String answer = xrp.getText();
-            questionBundle.putString("a" + i, answer);
-        }
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        questionBundle.putInt("qNum", bundle.getInt("qNum"));
+        questionBundle.putInt("nCorrect", bundle.getInt("nCorrect"));
+
         QuestionFragment questionFrag = new QuestionFragment();
         questionFrag.setArguments(questionBundle);
 
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.container, questionFrag);
         ft.commit();
     }
 
-    public void createAnswer(Bundle bundle) throws XmlPullParserException, IOException {
+    public void createAnswer(Bundle bundle) {
         Bundle ansBundle = new Bundle();
-        ansBundle.putString("topic", topic);
-        ansBundle.putBoolean("correct", bundle.getBoolean("correct"));
-        ansBundle.putInt("qNum", bundle.getInt("qNum"));
+        ansBundle.putInt("nextQNum", bundle.getInt("qNum") + 1);
         ansBundle.putInt("nCorrect", bundle.getInt("nCorrect"));
-        ansBundle.putString("yourAnswer", bundle.getString("yourAnswer"));
-        ansBundle.putString("correctAnswer", bundle.getString("correctAnswer"));
+        ansBundle.putString("yourAns", bundle.getString("yourAns"));
+        ansBundle.putString("correctAns", bundle.getString("correctAns"));
 
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        QuestionFragment ansFrag = new QuestionFragment();
+        AnswerFragment ansFrag = new AnswerFragment();
         ansFrag.setArguments(ansBundle);
 
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.container, ansFrag);
         ft.commit();
     }

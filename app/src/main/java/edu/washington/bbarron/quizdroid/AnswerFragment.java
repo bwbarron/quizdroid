@@ -19,27 +19,21 @@ import java.io.IOException;
 public class AnswerFragment extends Fragment {
 
     private Activity activity;
-    private String topic;
     private int nextQNum;
     private int nCorrect;
-    private String yourAnswer;
-    private String correctAnswer;
-    private boolean correct;
+    private String yourAns;
+    private String correctAns;
 
-    public AnswerFragment() {
-        // Required empty public constructor
-    }
+    public AnswerFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            topic = getArguments().getString("topic");
-            nextQNum = getArguments().getInt("qNum") + 1;
+            nextQNum = getArguments().getInt("nextQNum");
             nCorrect = getArguments().getInt("nCorrect");
-            yourAnswer = getArguments().getString("yourAnswer");
-            correctAnswer = getArguments().getString("correctAnswer");
-            correct = getArguments().getBoolean("correct");
+            yourAns = getArguments().getString("yourAns");
+            correctAns = getArguments().getString("correctAns");
         }
     }
 
@@ -50,40 +44,38 @@ public class AnswerFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_answer, container, false);
 
         TextView response = (TextView) v.findViewById(R.id.response);
-        if (correct) {
+        if (yourAns.equalsIgnoreCase(correctAns)) {
             response.setText("Correct!");
+            nCorrect += 1;
         } else {
             response.setText("Incorrect");
         }
 
         TextView your = (TextView) v.findViewById(R.id.your_answer);
-        your.setText("Your answer: " + yourAnswer);
+        your.setText("Your answer: " + yourAns);
         TextView ans = (TextView) v.findViewById(R.id.correct_answer);
-        ans.setText("Correct answer: " + correctAnswer);
+        ans.setText("Correct answer: " + correctAns);
         TextView totals = (TextView) v.findViewById(R.id.totals);
-        totals.setText("You have " + nCorrect + " out 5 correct");
+        final int totalQuestions = ((TriviaActivity) activity).topic.questions.size();
+        totals.setText("You have " + nCorrect + " out of " + totalQuestions + " correct");
 
         Button submit = (Button) v.findViewById(R.id.submit);
-        if (nextQNum > 5) {
+        if (nextQNum < totalQuestions) {
             submit.setText("Next");
         } else {
             submit.setText("Finish");
         }
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (nextQNum > 5) { // done with quiz
+            public void onClick(View view) {
+                if (nextQNum >= totalQuestions) { // done with quiz
                     ((TriviaActivity) activity).finishQuiz();
                 } else {
                     Bundle bundle = new Bundle();
-                    bundle.putString("topic", topic);
                     bundle.putInt("qNum", nextQNum);
+                    bundle.putInt("nCorrect", nCorrect);
 
-                    try {
-                        ((TriviaActivity) activity).createQuestion(bundle);
-                    } catch (XmlPullParserException | IOException e) {
-                        // handle
-                    }
+                    ((TriviaActivity) activity).createQuestion(bundle);
                 }
             }
         });

@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -21,10 +22,15 @@ public class MainActivity extends ActionBarActivity {
         List<Topic> topics = app.getAllTopics();
 
         ViewGroup layout = (ViewGroup) findViewById(R.id.layout);
+        int topicIndex = 0;
         for (int i = 0; i < layout.getChildCount(); i++) {
             View view = layout.getChildAt(i);
-            if (view instanceof TextView) {
-                ((TextView) view).setText(topics.get(i).title);
+            if (view.getClass() == RelativeLayout.class) {
+                View childView = ((RelativeLayout) view).getChildAt(0);
+                if (childView.getClass() == TextView.class) {
+                    ((TextView) childView).setText(topics.get(0).title); // should be get(topicIndex) instead of 0
+                    topicIndex++;
+                }
             }
         }
 
@@ -33,8 +39,9 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent viewOverview = new Intent(MainActivity.this, TriviaActivity.class);
 
-                TextView topic = (TextView) findViewById(v.getId());
-                viewOverview.putExtra("topic", topic.getText());
+                ViewGroup topic = (ViewGroup) findViewById(v.getId());
+                TextView text = (TextView) topic.getChildAt(0);
+                viewOverview.putExtra("topic", text.getText().toString());
 
                 startActivity(viewOverview);
             }
