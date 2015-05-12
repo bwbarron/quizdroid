@@ -35,10 +35,12 @@ public class OverviewFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_overview, container, false);
 
+        // set title text
         ViewGroup view = (ViewGroup) v.findViewById(R.id.title);
         TextView titleText = (TextView) view.getChildAt(0);
         titleText.setText(topic.title);
 
+        // set description text
         ViewGroup description = (ViewGroup) v.findViewById(R.id.description);
         TextView descText = (TextView) description.getChildAt(0);
         descText.setText("Number of questions: " + topic.questions.size() + "\n" + topic.desc);
@@ -51,6 +53,7 @@ public class OverviewFragment extends Fragment {
                 bundle.putInt("qNum", 0);
                 bundle.putInt("nCorrect", 0);
 
+                // create question fragment
                 ((TriviaActivity) activity).createQuestion(bundle);
             }
         });

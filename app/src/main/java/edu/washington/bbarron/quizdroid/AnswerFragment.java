@@ -20,7 +20,7 @@ public class AnswerFragment extends Fragment {
 
     private Activity activity;
     private int nextQNum;
-    private int nCorrect;
+    private int nCorrect; // total number correct so far in this quiz
     private String yourAns;
     private String correctAns;
 
@@ -29,6 +29,7 @@ public class AnswerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             nextQNum = getArguments().getInt("nextQNum");
             nCorrect = getArguments().getInt("nCorrect");
@@ -43,6 +44,7 @@ public class AnswerFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_answer, container, false);
 
+        // tells user if they got the previous question right or wrong
         TextView response = (TextView) v.findViewById(R.id.response);
         if (yourAns.equalsIgnoreCase(correctAns)) {
             response.setText("Correct!");
@@ -51,6 +53,7 @@ public class AnswerFragment extends Fragment {
             response.setText("Incorrect");
         }
 
+        // set other text on page
         TextView your = (TextView) v.findViewById(R.id.your_answer);
         your.setText("Your answer: " + yourAns);
         TextView ans = (TextView) v.findViewById(R.id.correct_answer);
@@ -59,6 +62,7 @@ public class AnswerFragment extends Fragment {
         final int totalQuestions = ((TriviaActivity) activity).topic.questions.size();
         totals.setText("You have " + nCorrect + " out of " + totalQuestions + " correct");
 
+        // set button text
         Button submit = (Button) v.findViewById(R.id.submit);
         if (nextQNum < totalQuestions) {
             submit.setText("Next");
@@ -70,7 +74,7 @@ public class AnswerFragment extends Fragment {
             public void onClick(View view) {
                 if (nextQNum >= totalQuestions) { // done with quiz
                     ((TriviaActivity) activity).finishQuiz();
-                } else {
+                } else { // next question
                     Bundle bundle = new Bundle();
                     bundle.putInt("qNum", nextQNum);
                     bundle.putInt("nCorrect", nCorrect);

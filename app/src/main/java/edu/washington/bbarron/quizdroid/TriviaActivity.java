@@ -26,8 +26,7 @@ public class TriviaActivity extends ActionBarActivity {
         Intent intent = getIntent();
         if (intent != null) {
             String title = intent.getStringExtra("topic");
-            //topic = ((QuizApp) getApplication()).getTopicByKeyword(title);
-            topic = ((QuizApp) getApplication()).getAllTopics().get(0); // testing purposes
+            topic = ((QuizApp) getApplication()).getTopicByKeyword(title); // get current topic
         }
 
         OverviewFragment overview = new OverviewFragment();
@@ -37,6 +36,7 @@ public class TriviaActivity extends ActionBarActivity {
         ft.commit();
     }
 
+    // sets necessary data and passes it to question fragment
     public void createQuestion(Bundle bundle) {
         Bundle questionBundle = new Bundle();
         questionBundle.putInt("qNum", bundle.getInt("qNum"));
@@ -50,6 +50,7 @@ public class TriviaActivity extends ActionBarActivity {
         ft.commit();
     }
 
+    // sets necessary data and passes it to answer fragment
     public void createAnswer(Bundle bundle) {
         Bundle ansBundle = new Bundle();
         ansBundle.putInt("nextQNum", bundle.getInt("qNum") + 1);
@@ -65,6 +66,7 @@ public class TriviaActivity extends ActionBarActivity {
         ft.commit();
     }
 
+    // ends quiz and brings user back to main menu
     public void finishQuiz() {
         Intent intent = new Intent(TriviaActivity.this, MainActivity.class);
         startActivity(intent);

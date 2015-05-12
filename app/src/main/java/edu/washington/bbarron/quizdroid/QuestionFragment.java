@@ -22,8 +22,8 @@ public class QuestionFragment extends Fragment {
     private Activity activity;
     private Quiz quiz;
     private int qNum;
-    private int nCorrect;
-    private View v;
+    private int nCorrect; // total correct so far in this quiz
+    private View v; // for use in submit button OnClickListener
     private Button submit;
     private RadioGroup options;
 
@@ -47,6 +47,7 @@ public class QuestionFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_question, container, false);
 
+        // set question text
         ViewGroup q = (ViewGroup) v.findViewById(R.id.question);
         TextView tv = (TextView) q.getChildAt(0);
         tv.setText(quiz.text);
@@ -54,10 +55,13 @@ public class QuestionFragment extends Fragment {
         options = (RadioGroup) v.findViewById(R.id.options);
         submit = (Button) v.findViewById(R.id.submit);
 
+        // set text for answers
         for (int i = 0; i < options.getChildCount(); i++) {
             RadioButton option = (RadioButton) options.getChildAt(i);
             option.setText(quiz.answers.get(i));
         }
+
+        // make submit button visible after user selected an answer
         options.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -71,6 +75,7 @@ public class QuestionFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("qNum", qNum);
 
+                // get selected and correct answers
                 int selectedId = options.getCheckedRadioButtonId();
                 RadioButton selected = (RadioButton) v.findViewById(selectedId);
                 String selectedAns = selected.getText().toString();
@@ -79,6 +84,8 @@ public class QuestionFragment extends Fragment {
                 bundle.putInt("nCorrect", nCorrect);
                 bundle.putString("yourAns", selectedAns);
                 bundle.putString("correctAns", correctAns);
+
+                // send user to answer page
                 ((TriviaActivity) activity).createAnswer(bundle);
             }
         });

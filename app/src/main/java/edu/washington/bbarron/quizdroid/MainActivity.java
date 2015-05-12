@@ -21,6 +21,7 @@ public class MainActivity extends ActionBarActivity {
         QuizApp app = (QuizApp) getApplication();
         List<Topic> topics = app.getAllTopics();
 
+        // label quiz topics
         ViewGroup layout = (ViewGroup) findViewById(R.id.layout);
         int topicIndex = 0;
         for (int i = 0; i < layout.getChildCount(); i++) {
@@ -28,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
             if (view.getClass() == RelativeLayout.class) {
                 View childView = ((RelativeLayout) view).getChildAt(0);
                 if (childView.getClass() == TextView.class) {
-                    ((TextView) childView).setText(topics.get(0).title); // should be get(topicIndex) instead of 0
+                    ((TextView) childView).setText(topics.get(topicIndex).title);
                     topicIndex++;
                 }
             }
@@ -44,6 +45,7 @@ public class MainActivity extends ActionBarActivity {
                 viewOverview.putExtra("topic", text.getText().toString());
 
                 startActivity(viewOverview);
+                finish();
             }
         };
 
