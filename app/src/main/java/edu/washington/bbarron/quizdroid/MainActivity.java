@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -15,14 +17,25 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        QuizApp app = (QuizApp) getApplication();
+        List<Topic> topics = app.getAllTopics();
+
+        ViewGroup layout = (ViewGroup) findViewById(R.id.layout);
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            View view = layout.getChildAt(i);
+            if (view instanceof TextView) {
+                ((TextView) view).setText(topics.get(i).title);
+            }
+        }
+
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent viewOverview = new Intent(MainActivity.this, TriviaActivity.class);
 
-                ViewGroup quizView = (ViewGroup) findViewById(v.getId());
-                TextView topic = (TextView) quizView.getChildAt(0);
+                TextView topic = (TextView) findViewById(v.getId());
                 viewOverview.putExtra("topic", topic.getText());
+
                 startActivity(viewOverview);
             }
         };

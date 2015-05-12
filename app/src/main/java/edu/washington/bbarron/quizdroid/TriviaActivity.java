@@ -9,9 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Xml;
 import android.widget.Toast;
-
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 
 

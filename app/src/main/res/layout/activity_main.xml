@@ -3,7 +3,9 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:id="@+id/layout" >
+
 
     <View
         android:id="@+id/divider1"
@@ -13,19 +15,12 @@
         android:layout_marginTop="10dp" />
 
 
-    <RelativeLayout
+    <TextView
         android:id="@+id/quiz1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:padding="15dp"
-        android:layout_below="@+id/divider1" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quiz1" />
-
-    </RelativeLayout>
+        android:layout_below="@+id/divider1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
     <View
@@ -36,19 +31,12 @@
         android:layout_below="@+id/quiz1" />
 
 
-    <RelativeLayout
+    <TextView
         android:id="@+id/quiz2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:padding="15dp"
         android:layout_below="@+id/divider2"
-        android:padding="15dp" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quiz2" />
-
-    </RelativeLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
     <View
@@ -59,19 +47,12 @@
         android:layout_below="@+id/quiz2" />
 
 
-    <RelativeLayout
+    <TextView
         android:id="@+id/quiz3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:padding="15dp"
         android:layout_below="@+id/divider3"
-        android:padding="15dp" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quiz3" />
-
-    </RelativeLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
     <View
