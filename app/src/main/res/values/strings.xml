@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">QuizDroid</string>
     <string name="title_activity_trivia">TriviaActivity</string>
+    <string name="title_activity_preferences">PreferencesActivity</string>
 
     <string name="quiz1">Math</string>
     <string name="quiz2">Physics</string>
     <string name="quiz3">Marvel Super Heroes</string>
     <string name="quiz4">Super Smash Brothers Melee</string>
+
 
 </resources>
