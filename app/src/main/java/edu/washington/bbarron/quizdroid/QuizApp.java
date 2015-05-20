@@ -130,12 +130,12 @@ public class QuizApp extends Application implements TopicRepository {
         return new String(buffer, "UTF-8");
     }
 
-    // writes data into file data.json
+    // writes data into file questions.json
     public void writeToFile(String data) {
         try {
             Log.i("MyApp", "writing to file");
 
-            File file = new File(getFilesDir().getAbsolutePath(), "data.json");
+            File file = new File(getFilesDir().getAbsolutePath(), "questions.json");
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(data.getBytes());
             fos.close();

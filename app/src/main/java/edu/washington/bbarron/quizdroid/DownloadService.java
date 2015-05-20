@@ -44,16 +44,17 @@ public class DownloadService extends IntentService {
         Log.i("DownloadService", "startOrStopAlarm on = " + on);
 
         Intent alarmReceiverIntent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, MY_ALARM, alarmReceiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, MY_ALARM,
+                alarmReceiverIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         if (on) {
+            // set interval based on preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-            int refreshInterval = sharedPref.getInt("pref_freq", 15) * 60 * 1000; // set this based on preferences
-            // maybe need to use getString and Integer.PArseInt()?????????
+            int refreshInterval = Integer.parseInt(sharedPref.getString("pref_freq", "15")) * 60 * 1000;
 
-            Log.i("DownloadService", "setting alarm interval to " + (refreshInterval / 60000) + " minutes");
+            Log.i("DownloadService", "setting alarm interval to " + (refreshInterval / 60000) + " minute(s)");
 
             // Start the alarm manager to repeat
             manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), refreshInterval, pendingIntent);
