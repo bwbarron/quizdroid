@@ -28,9 +28,8 @@ public class DownloadService extends IntentService {
     @Override
     protected void onHandleIntent(Intent workIntent) {
         Log.i("DownloadService", "entered onHandleIntent()");
-        // this method is called where the AlarmManager should've started the download service and we just received it here!
 
-        //String url = "http://www.EricCheeIsAwesome.com/data.json"; // set this based on preferences
+        // get download URL from preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String url = prefs.getString("pref_url", "");
 
@@ -50,7 +49,7 @@ public class DownloadService extends IntentService {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         if (on) {
-            // set interval based on preferences
+            // get interval from preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
             int refreshInterval = Integer.parseInt(sharedPref.getString("pref_freq", "15")) * 60 * 1000;
 

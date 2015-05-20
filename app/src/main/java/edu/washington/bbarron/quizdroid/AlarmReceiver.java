@@ -17,6 +17,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.i("AlarmReceiver", "entered onReceive() from AlarmReceiver");
 
+        // get URL from preferences to display in toast message
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String url = prefs.getString("pref_url", "");
         Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
