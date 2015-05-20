@@ -6,7 +6,9 @@ import android.app.IntentService;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 
@@ -28,8 +30,9 @@ public class DownloadService extends IntentService {
         Log.i("DownloadService", "entered onHandleIntent()");
         // this method is called where the AlarmManager should've started the download service and we just received it here!
 
-        String url = "http://www.EricCheeIsAwesome.com/data.json"; // set this based on preferences
-
+        //String url = "http://www.EricCheeIsAwesome.com/data.json"; // set this based on preferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String url = prefs.getString("pref_url", "");
 
         // Start the download
         dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
@@ -59,10 +62,5 @@ public class DownloadService extends IntentService {
 
             Log.i("DownloadService", "Stopping alarm");
         }
-    }
-
-    // gets download url from preferences
-    public String getURL() {
-
     }
 }

@@ -123,7 +123,6 @@ public class MainActivity extends ActionBarActivity {
                                 break;
                             case DownloadManager.STATUS_FAILED:
                                 // handle the case where the download failed here
-                                // retry download?
 
 
                                 break;
@@ -150,6 +149,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.preferences) {
+            Intent startPrefs = new Intent(MainActivity.this, PreferencesActivity.class);
+            startActivity(startPrefs);
             return true;
         }
 

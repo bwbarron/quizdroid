@@ -2,6 +2,7 @@
     <string name="app_name">QuizDroid</string>
     <string name="title_activity_trivia">TriviaActivity</string>
     <string name="title_activity_preferences">PreferencesActivity</string>
+    <string name="action_settings">Preferences</string>
 
     <string name="quiz1">Math</string>
     <string name="quiz2">Physics</string>

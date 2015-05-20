@@ -1,39 +1,44 @@
 package edu.washington.bbarron.quizdroid;
 
+import android.content.SharedPreferences;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class PreferencesActivity extends ActionBarActivity {
+public class PreferencesActivity extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preferences);
+
+        addPreferencesFromResource(R.xml.preferences);
+        setPrefListener(findPreference("pref_url"));
+        setPrefListener(findPreference("pref_freq"));
     }
 
+    private static void setPrefListener(Preference preference) {
+        preference.setOnPreferenceChangeListener(prefChangeListener);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_preferences, menu);
-        return true;
+        // set preferences with default values
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
+        prefChangeListener.onPreferenceChange(preference, sharedPref.getString(preference.getKey(), ""));
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+    private static Preference.OnPreferenceChangeListener prefChangeListener = new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            // checks if value is int, then check if it is positive
+            // verifies that the frequency is greater than zero
+            // if value is not an int (inputting a url) then it sets preference to the new value
+            if (!(newValue instanceof Integer && (int) newValue <= 0)) {
+                preference.setSummary(newValue.toString());
+            }
             return true;
         }
-
-        return super.onOptionsItemSelected(item);
-    }
+    };
 }

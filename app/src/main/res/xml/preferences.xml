@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="pref_url"
+        android:title="URL to download from"
+        android:defaultValue="http://tednewardsandbox.site44.com/questions.json"
+        android:inputType="textUri"
+        android:maxLines="1" />
+
+    <EditTextPreference
+        android:key="pref_freq"
+        android:title="Download frequency (minutes)"
+        android:defaultValue="20"
+        android:inputType="number" />
+
+
+</PreferenceScreen>
