@@ -6,13 +6,15 @@
         android:title="URL to download from"
         android:defaultValue="http://tednewardsandbox.site44.com/questions.json"
         android:inputType="textUri"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:selectAllOnFocus="true" />
 
     <EditTextPreference
         android:key="pref_freq"
         android:title="Download frequency (minutes)"
         android:defaultValue="20"
-        android:inputType="number" />
+        android:inputType="number"
+        android:selectAllOnFocus="true" />
 
 
 </PreferenceScreen>
