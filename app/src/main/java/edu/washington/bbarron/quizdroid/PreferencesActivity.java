@@ -1,5 +1,6 @@
 package edu.washington.bbarron.quizdroid;
 
+import android.app.DownloadManager;
 import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
