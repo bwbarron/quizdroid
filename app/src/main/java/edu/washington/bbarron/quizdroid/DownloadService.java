@@ -49,7 +49,9 @@ public class DownloadService extends IntentService {
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         if (on) {
-            int refreshInterval = 5 * 60000; // set this based on preferences
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+            int refreshInterval = sharedPref.getInt("pref_freq", 15) * 60 * 1000; // set this based on preferences
+            // maybe need to use getString and Integer.PArseInt()?????????
 
             Log.i("DownloadService", "setting alarm interval to " + (refreshInterval / 60000) + " minutes");
 
