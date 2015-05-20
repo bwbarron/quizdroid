@@ -17,10 +17,13 @@ public class PreferencesActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.preferences);
+        // set preference change listeners
         setPrefListener(findPreference("pref_url"));
         setPrefListener(findPreference("pref_freq"));
     }
 
+    // sets the onPreferenceChangeListener for the passed preference
+    // sets the preference with the default value specified in the xml
     private static void setPrefListener(Preference preference) {
         preference.setOnPreferenceChangeListener(prefChangeListener);
 

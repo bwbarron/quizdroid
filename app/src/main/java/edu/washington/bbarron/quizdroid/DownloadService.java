@@ -51,11 +51,10 @@ public class DownloadService extends IntentService {
         if (on) {
             // get interval from preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-            int refreshInterval = Integer.parseInt(sharedPref.getString("pref_freq", "15")) * 60 * 1000;
+            int refreshInterval = Integer.parseInt(sharedPref.getString("pref_freq", "20")) * 60 * 1000;
 
             Log.i("DownloadService", "setting alarm interval to " + (refreshInterval / 60000) + " minute(s)");
 
-            // Start the alarm manager to repeat
             manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), refreshInterval, pendingIntent);
         }
         else {

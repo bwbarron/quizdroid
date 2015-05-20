@@ -70,11 +70,15 @@ public class MainActivity extends ActionBarActivity {
         View marvelQuiz = findViewById(R.id.quiz3);
         marvelQuiz.setOnClickListener(clickListener);
 
+        /*
         IntentFilter filter = new IntentFilter();
         filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
         registerReceiver(receiver, filter);
+        */
     }
 
+    // fires when a download completes
+    // (doesn't fire at all as of part 4, since no download is actually occurring)
     private final BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
