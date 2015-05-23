@@ -1,14 +1,10 @@
 package edu.washington.bbarron.quizdroid;
 
-import android.app.DownloadManager;
 import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class PreferencesActivity extends PreferenceActivity {

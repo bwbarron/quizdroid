@@ -15,17 +15,15 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.i("AlarmReceiver", "entered onReceive() from AlarmReceiver");
+        Log.i("AlarmReceiver", "AlarmReceiver onReceive() firing");
 
-        // get URL from preferences to display in toast message
+        // get URL from preferences and display in toast message
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String url = prefs.getString("pref_url", "");
+        String url = prefs.getString("pref_url", null);
         Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
 
         // have DownloadService class start the download
-        /*
-        Intent downloadServiceIntent = new Intent(context, DownloadService.class);
-        context.startService(downloadServiceIntent);
-        */
+        Intent downloadIntent = new Intent(context, DownloadService.class);
+        context.startService(downloadIntent);
     }
 }
