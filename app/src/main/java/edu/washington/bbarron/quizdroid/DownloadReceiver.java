@@ -19,7 +19,7 @@ import java.io.OutputStream;
 
 public class DownloadReceiver extends BroadcastReceiver {
 
-    Context context;
+    private Context context;
     private long downloadID;
 
     @Override
@@ -60,10 +60,6 @@ public class DownloadReceiver extends BroadcastReceiver {
                                 // update topics list
                                 QuizApp app = (QuizApp) context.getApplicationContext();
                                 app.populateTopicsList();
-                                // TODO
-                                // bring back to main screen?????
-                                // maybe override MainActivity onResume to repopulate topics on UI
-                                // instead of redirecting after file write
 
                             } catch (IOException e) {
                                 e.printStackTrace();

@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
 
     private DownloadManager dm;
     private long downloadID;
-    DownloadReceiver downloadReceiver = new DownloadReceiver();
+    private DownloadReceiver downloadReceiver = new DownloadReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,6 @@ public class MainActivity extends ActionBarActivity {
                 viewOverview.putExtra("topic", text.getText().toString());
 
                 startActivity(viewOverview);
-                finish();
             }
         };
 
@@ -106,12 +105,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     // checks user's network connection and airplane mode status
-    private void checkConnection() {
+    public void checkConnection() {
         if (!hasNetworkConnection()) { // user has no internet connection
             if (isAirplaneModeOn()) { // user has airplane mode on
                 Log.i("MainActivity", "airplane mode is on");
 
-                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getApplicationContext());
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
                 alertBuilder
                         .setTitle("No internet connection")
                         .setMessage("Airplane mode is on. Would you like to turn it off?")

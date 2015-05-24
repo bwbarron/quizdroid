@@ -35,6 +35,9 @@
         <receiver android:name=".AlarmReceiver" >
 
         </receiver>
+        <service android:name=".DownloadService" >
+
+        </service>
     </application>
 
 </manifest>

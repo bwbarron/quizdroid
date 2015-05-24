@@ -15,7 +15,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.i("AlarmReceiver", "AlarmReceiver onReceive() firing");
+        Log.i("AlarmReceiver", "onReceive() firing");
 
         // get URL from preferences and display in toast message
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);

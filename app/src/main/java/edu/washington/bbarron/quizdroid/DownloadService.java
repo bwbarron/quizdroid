@@ -53,7 +53,7 @@ public class DownloadService extends IntentService {
 
             Log.i("DownloadService", "setting alarm interval to " + (refreshInterval / 60000) + " minute(s)");
 
-            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + refreshInterval,
+            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
                     refreshInterval, pendingIntent);
         }
         else {
