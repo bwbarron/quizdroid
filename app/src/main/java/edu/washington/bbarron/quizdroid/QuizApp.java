@@ -31,6 +31,7 @@ public class QuizApp extends Application implements TopicRepository {
 
         Log.i("QuizApp", "QuizApp onCreate firing");
         populateTopicsList();
+        // start automatic downloading
         DownloadService.startOrStopAlarm(this, true);
     }
 
@@ -69,7 +70,7 @@ public class QuizApp extends Application implements TopicRepository {
             if (file.exists()) {
                 inputStream = openFileInput("questions.json");
                 json = readJSON(inputStream);
-            } else {
+            } else { // use backup questions file
                 inputStream = getAssets().open("data.json");
                 json = readJSON(inputStream);
             }
@@ -103,56 +104,6 @@ public class QuizApp extends Application implements TopicRepository {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-
-        /*
-        if (file.exists()) { // if downloaded file exists
-            try {
-                FileInputStream fis = openFileInput("questions.json");
-                json = readJSON(fis);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else { // if file not found, fetch from assets
-            try {
-                InputStream inputStream = getAssets().open("data.json");
-                json = readJSON(inputStream);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        try {
-
-            JSONArray jsonArray = new JSONArray(json);
-            for (int i = 0; i < jsonArray.length(); i++) { // parse all topics
-                JSONObject jsonObj = (JSONObject) jsonArray.get(i);
-                Topic topic = new Topic();
-                topic.title = jsonObj.getString("title");
-                topic.desc = jsonObj.getString("desc");
-                topic.questions = new ArrayList<>();
-
-                JSONArray questions = jsonObj.getJSONArray("questions");
-                for (int j = 0; j < questions.length(); j++) { // parse questions in this topic
-                    JSONObject question = (JSONObject) questions.get(j);
-                    Quiz quiz = new Quiz();
-                    quiz.text = question.getString("text");
-                    quiz.correct = question.getInt("answer") - 1;
-                    quiz.answers = new ArrayList<>();
-
-                    JSONArray answers = question.getJSONArray("answers");
-                    for (int k = 0; k < answers.length(); k++) { // parse answers for this question
-                        quiz.answers.add(answers.getString(k));
-                    }
-
-                    topic.questions.add(quiz);
-                }
-                topics.add(topic);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        */
     }
 
     // reads JSON file

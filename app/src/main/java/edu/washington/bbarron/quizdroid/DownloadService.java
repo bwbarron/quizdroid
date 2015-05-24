@@ -56,7 +56,7 @@ public class DownloadService extends IntentService {
             manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
                     refreshInterval, pendingIntent);
         }
-        else {
+        else { // stop alarm
             manager.cancel(pendingIntent);
             pendingIntent.cancel();
 

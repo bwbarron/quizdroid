@@ -74,6 +74,7 @@ public class DownloadReceiver extends BroadcastReceiver {
         }
     }
 
+    // writes input file to questions.json
     private void writeToFile(ParcelFileDescriptor file) throws IOException {
         Log.i("DownloadReceiver", "writing to file");
 
@@ -86,10 +87,11 @@ public class DownloadReceiver extends BroadcastReceiver {
         outputStream.write(buffer);
     }
 
+    // if download fails, pops up a dialog so user can choose to retry the download or cancel
     private void onDownloadFail() {
         Log.e("DownloadReceiver", "download failed");
 
-        // build dialog that allows user to retry download or cancel
+        // build dialog
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
         alertBuilder
                 .setTitle("Quiz download failed")

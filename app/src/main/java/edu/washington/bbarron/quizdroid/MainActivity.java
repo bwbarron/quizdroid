@@ -86,7 +86,7 @@ public class MainActivity extends ActionBarActivity {
         unregisterReceiver(downloadReceiver);
     }
 
-    // TODO: programmatically set xml with ListView!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // sets the UI which contains the list of quizzes available
     private void setTopicsUI() {
         QuizApp app = (QuizApp) getApplication();
         List<Topic> topics = app.getAllTopics();
@@ -110,11 +110,13 @@ public class MainActivity extends ActionBarActivity {
             if (isAirplaneModeOn()) { // user has airplane mode on
                 Log.i("MainActivity", "airplane mode is on");
 
+                // build dialog
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
                 alertBuilder
                         .setTitle("No internet connection")
                         .setMessage("Airplane mode is on. Would you like to turn it off?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            // brings user to settings
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent settingsIntent = new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
@@ -124,9 +126,10 @@ public class MainActivity extends ActionBarActivity {
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            // turns off automatic downloading until they restart app
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                DownloadService.startOrStopAlarm(getApplicationContext(), false);
+                                DownloadService.startOrStopAlarm(MainActivity.this, false);
                                 dialog.cancel();
                             }
                         });
@@ -136,7 +139,8 @@ public class MainActivity extends ActionBarActivity {
 
                 Toast.makeText(getApplicationContext(), "No internet connection",
                         Toast.LENGTH_SHORT).show();
-                DownloadService.startOrStopAlarm(getApplicationContext(), false);
+                // stop automatic downloading
+                DownloadService.startOrStopAlarm(MainActivity.this, false);
             }
         }
     }
